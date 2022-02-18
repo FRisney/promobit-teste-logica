@@ -20,7 +20,20 @@ class ProductStructure
 
     public function make(): array
     {
-       //todo your code.
-        return [];
+        $n = [];
+        foreach (self::products as $product) {
+            $split = explode('-', $product);
+            $cor = $split[0];
+            $tam = $split[1];
+
+            if (!isset($n[$cor]))
+                $n[$cor] = [];
+
+            if (!isset($n[$cor][$tam]))
+                $n[$cor][$tam] = 0;
+
+            $n[$cor][$tam]++;
+        }
+        return $n;
     }
 }
